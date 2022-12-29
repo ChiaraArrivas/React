@@ -6,7 +6,6 @@ export class ClickTracker extends React.Component {
     }
     
     handleLastButton = (event) => {
-        console.log(event);
         this.setState((state) => {
             return {
                 target: event.target.textContent
