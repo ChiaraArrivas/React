@@ -33,7 +33,7 @@ render() {
     return (
         <div>
             <div>
-                <button type="button" onClick={this.onLogin} disabled={!this.state.name || !this.state.password ? true : false}>Login</button>
+                <button type="submit" onClick={this.onLogin} disabled={!this.state.name || !this.state.password ? true : false}>Login</button>
                 <button type="button" onClick={this.resetState}>Reset</button>
             </div>
             <div>
