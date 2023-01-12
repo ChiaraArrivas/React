@@ -21,8 +21,7 @@ export function GithubUserList() {
 
     useEffect(() => {
         setGitHubUser(usernames.map((el, index) => <GithubUser user={el} key={el+index}/>))
-    },
-        [usernames])
+    },[usernames])
 
     return (
         <div>
