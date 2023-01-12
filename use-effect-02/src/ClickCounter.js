@@ -16,8 +16,7 @@ export function ClickCounter({ initialValue= 0}) {
         console.log(`The counter is ${counter}`)
         
         return () => {
-            console.log(`The counter was ${counter}`)
-            
+            console.log(`The counter was ${counter}`)            
         }
     }, [counter])
 
