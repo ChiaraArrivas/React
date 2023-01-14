@@ -1,21 +1,21 @@
-import {useState} from "react";
+import { useState } from "react";
 
-export const useInput = (val) => {
-    const [value, setValue] = useState(val)
+export function useInput() {
+    const [inputName, setValueName] = useState("")
+    const [inputPassword, setValuePassword] = useState("")
 
-    function onChange(event) {        
-        let name = event.target.name;
-        let data = event.target.type === "checkox" ? event.target.checked : event.target.value
-
-        setValue(data => {
-            return {
-                [name]: data,
-            }
-        })
-}
-    const reset = () => {
-        setValue("")
+    function onChangeInput(event) {
+        if(event.target.name === "name"){
+            setValueName(event.target.value);
+        }else if(event.target.name === "password"){
+            setValuePassword(event.target.value);
+        }
     }
 
-return {value: value, onChange: onChange, reset: reset}
+    function handleReset() {
+        setValueName("");
+        setValuePassword("")
+    }
+
+    return {inputName: inputName, inputPassword: inputPassword, onChangeInput: onChangeInput, handleReset: handleReset}
 }

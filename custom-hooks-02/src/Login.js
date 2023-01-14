@@ -2,22 +2,19 @@ import React from "react";
 import { useInput } from "./useInput";
 
 export function Login() {
-    const { value, onChange, reset} = useInput({
-        name: "",
-        password: "",
-        remember: false,
-    })
+    const {inputName, inputPassword, onChangeInput, handleReset} = useInput()
 
+    function handleChangeInput(event) {
+        onChangeInput(event)
+    }
+    
     return ( 
         <div>
             <form >
-                <input name="name" placeholder="Name" value={value.name} onChange={onChange} />
-                <input name="password" type="password" value={value.password} placeholder="Password" onChange={onChange} />
-                <input name="remember" id="remember" type="checkbox" value={value.remember} onChange={onChange} />
-                <label htmlFor="remember">Remember</label>
-
-                <button type="submit" disabled={!value.name || !value.password ? true : false}>Login</button>
-                <button onChange={reset}>Reset</button>
+                <input name="name" placeholder="Name" value={inputName} onChange={handleChangeInput} />
+                <input name="password" type="password" value={inputPassword} placeholder="Password" onChange={handleChangeInput} />
+                <button type="submit" disabled={!inputName || !inputPassword ? true : false}>Login</button>
+                <button onClick={handleReset}>Reset</button>
             </form>
         </div>
     )
