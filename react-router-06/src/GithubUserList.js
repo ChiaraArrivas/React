@@ -1,33 +1,35 @@
-import { useState, useEffect } from "react"
-import { GithubUser } from "./GithubUser"
+import { useState } from "react"
+import { Link, Outlet } from "react-router-dom"
 
 export function GithubUserList() {
     const [user, setUsernames] = useState([])
-    const [input, setInput] = useState()
-    const [gitHubUser, setGitHubUser] = useState(null)
+    const [item, setItems] = useState([])
 
-    function handleInputChange(event) {
-        setInput(event.target.value)
-    }
 
-    const onClickAdd = () => {
+    const onClickAdd = (event) => {
+        event.preventDefault();
         setUsernames((users) =>
             [
                 ...users,
-                input
+                event.target.user.value
             ]
         )
-    }
 
-    useEffect(() => {
-        setGitHubUser(user.map((el, index) => <GithubUser user={el} key={el+index}/>))
-    },[user])
+        setItems(user.map((el, index) =>
+            <Link to={el} key={el + index}>Show user {el}</Link>
+        ))
+    }
 
     return (
         <div>
-            <input onChange={handleInputChange} type="text"></input>
-            <button onClick={onClickAdd}>Add</button>
-            {gitHubUser}
+            <form onSubmit={onClickAdd}>
+                <input name="user" type="text"></input>
+                <button>Add</button>
+            </form>
+            <hr />
+
+            {item}
+            <Outlet />
         </div>
     )
 }

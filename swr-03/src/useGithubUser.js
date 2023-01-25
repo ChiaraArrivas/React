@@ -9,7 +9,7 @@ export function useGithubUser() {
     const { data, error, mutate } = useSWR(usernameUrl, fetcher);
 
     function handleRefreshUser() {
-        mutate() //potrei passare un argomento alla funzione "mutate" per specificare un nuovo URL o configurazione per la richiesta.
+        mutate() //potrei passare un argomento alla funzione "mutate" per specificare un nuovo URL.
     }
 
     return {
